@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html  ng-app="myapp">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" type="text/css">
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+    <link href="assets/libraries/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/libraries/bootstrap-fileinput/css/fileinput.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/libraries/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/libraries/bootstrap-wysiwyg/bootstrap-wysiwyg.min.css" rel="stylesheet" type="text/css">
+    <link href="assets/css/black-green.css" rel="stylesheet" type="text/css" id="style-primary">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/favicon.png">
+	
+	
+
+
+    <title>Smart Recruit</title>
+    <style>
+        @media only screen and (max-width: 480px) {
+            .header-top {
+                padding: 20px 0px !important;
+            }
+        }
+
+        .header-top {
+            border-bottom: 2px solid #4c953f;
+            margin-bottom: 3px;
+        }
+    </style>
+
+
+	
+    <script type="text/javascript" src="assets/js/jquery.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.ezmark.js"></script>
+    <script type="text/javascript" src="assets/libraries/bootstrap-sass/javascripts/bootstrap/collapse.js"></script>
+    <script type="text/javascript" src="assets/libraries/bootstrap-sass/javascripts/bootstrap/dropdown.js"></script>
+    <script type="text/javascript" src="assets/libraries/bootstrap-sass/javascripts/bootstrap/tab.js"></script>
+    <script type="text/javascript" src="assets/libraries/bootstrap-sass/javascripts/bootstrap/transition.js"></script>
+    <script type="text/javascript" src="assets/libraries/bootstrap-fileinput/js/fileinput.min.js"></script>
+    <script type="text/javascript" src="assets/libraries/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script type="text/javascript" src="assets/libraries/bootstrap-wysiwyg/bootstrap-wysiwyg.min.js"></script>
+    <script type="text/javascript" src="assets/libraries/cycle2/jquery.cycle2.min.js"></script>
+    <script type="text/javascript" src="assets/libraries/cycle2/jquery.cycle2.carousel.min.js"></script>
+    <script type="text/javascript" src="assets/libraries/countup/countup.min.js"></script>
+ 
+
+
+
+<script src="bower_components/angular/angular.min.js"></script>
+    <script  src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+	<script type="text/javascript" src="assets/js/LayoutJS/layout.js"></script>
+   <script type="text/javascript" src="assets/js/main.js"></script>
+</head>
+
+<body class="hero-content-dark footer-dark">
+    <div class="page-wrapper" ng-app="myapp">
+       
+
+
+
+
+
+
+
+
+
+
+	   <div class="header-wrapper">
+			<div ui-view="header"></div>
+	   </div><!-- /.header-wrapper-->
+	  
+		<div class="container" style="width: 100% !important;">
+			<div  class="container" ui-view="content" style="padding-top: 60px;">
+
+
+
+
+
+
+
+
+			</div>
+		</div>  
+	   
+        <div class="footer-wrapper">
+              <div ui-view="footer"></div>
+        </div><!-- /.footer-wrapper -->
+    </div><!-- /.page-wrapper -->	
+	
+	
+	
+
+
+</body>
+</html>

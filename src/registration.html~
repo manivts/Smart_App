@@ -1,0 +1,88 @@
+<div class="main">
+<div class="document-title">
+	<div class="container">
+		<h1 class="center">Account Registration</h1>
+	</div><!-- /.container -->
+</div><!-- /.document-title -->
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			<ul class="nav nav-tabs" role="tablist">
+				<li role="presentation" class="active">
+					<a href="#personal" aria-controls="personal" role="tab" data-toggle="tab">
+						<strong>Personal Account</strong>
+						<span>create your account here</span>
+					</a>
+				</li>
+			</ul>
+			<div class="tab-content">
+				<div role="tabpanel" class="tab-pane active" id="personal">
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label for="form-register-username">Username</label>
+								<input type="text" class="form-control" id="form-register-username">
+							</div><!-- /.form-group -->
+							<div class="form-group">
+								<label for="form-register-email">E-mail</label>
+								<input type="email" class="form-control" id="form-register-email">
+							</div><!-- /.form-group -->
+							<div class="form-group">
+								<label for="form-register-password">Password</label>
+								<input type="password" class="form-control" id="form-register-password">
+							</div><!-- /.form-group -->
+							<div class="form-group">
+								<label for="form-register-retype">Retype Password</label>
+								<input type="password" class="form-control" id="form-register-retype">
+							</div><!-- /.form-group -->
+						</div><!-- /.col-* -->
+						<div class="col-sm-6">
+							<div class="row">
+								<div class="form-group col-sm-6">
+									<label for="form-register-first-name">First Name</label>
+									<input type="text" class="form-control" id="form-register-first-name">
+								</div><!-- /.form-group -->
+								<div class="form-group col-sm-6">
+									<label for="form-login-surname">Surname</label>
+									<input type="text" class="form-control" id="form-register-username">
+								</div><!-- /.form-group -->
+							</div><!-- /.row -->
+							<div class="form-group">
+								<label form="form-register-photo">Profile Picture</label>
+								<input type="file" name="form-register-photo" id="form-register-photo">
+							</div><!-- /.form-group-->
+						</div><!-- /.col-* -->
+					</div><!-- /.row -->
+					<div class="center">
+						<div class="checkbox checkbox-info">
+							<label><input type="checkbox"> By signing up, you agree with the <a href="#">terms and conditions</a></label>
+						</div><!-- /.checkbox -->
+						<button id="btnCreateAccount" type="submit" class="btn btn-secondary">Create an Account</button>
+					</div><!-- /.center -->
+				</div><!-- /.tab-pane -->
+   
+			</div><!-- /.tab-content -->
+		</div><!-- /.col-* -->
+	</div><!-- /.row -->
+
+
+	<script src="bower_components/angular/angular.min.js"></script>
+    <script  src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+	
+    <script type="text/javascript" src="assets/js/jquery.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.ezmark.js"></script>
+    <script type="text/javascript" src="assets/libraries/bootstrap-sass/javascripts/bootstrap/collapse.js"></script>
+    <script type="text/javascript" src="assets/libraries/bootstrap-sass/javascripts/bootstrap/dropdown.js"></script>
+    <script type="text/javascript" src="assets/libraries/bootstrap-sass/javascripts/bootstrap/tab.js"></script>
+    <script type="text/javascript" src="assets/libraries/bootstrap-sass/javascripts/bootstrap/transition.js"></script>
+    <script type="text/javascript" src="assets/libraries/bootstrap-fileinput/js/fileinput.min.js"></script>
+    <script type="text/javascript" src="assets/libraries/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script type="text/javascript" src="assets/libraries/bootstrap-wysiwyg/bootstrap-wysiwyg.min.js"></script>
+    <script type="text/javascript" src="assets/libraries/cycle2/jquery.cycle2.min.js"></script>
+    <script type="text/javascript" src="assets/libraries/cycle2/jquery.cycle2.carousel.min.js"></script>
+    <script type="text/javascript" src="assets/libraries/countup/countup.min.js"></script>
+    <script type="text/javascript" src="assets/js/main.js"></script>
+	<script type="text/javascript" src="assets/js/LayoutJS/layout.js"></script>
+</div><!-- /.container -->
+</div><!-- /.main -->
+
