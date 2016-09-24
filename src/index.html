@@ -12,12 +12,20 @@
     <link href="assets/libraries/bootstrap-wysiwyg/bootstrap-wysiwyg.min.css" rel="stylesheet" type="text/css">
     <link href="assets/css/black-green.css" rel="stylesheet" type="text/css" id="style-primary">
     <link rel="shortcut icon" type="image/x-icon" href="assets/favicon.png">
-	
-	
 
+	<link href="assets/css/massautocomplete.css" rel="stylesheet" type="text/css" id="style-primary">
+	
+	<!-- datepicker CSS -->
+	<link href="assets/DatePicker/css/angular-strap/docs.min.css" rel="stylesheet" type="text/css">
+	<link href="assets/DatePicker/css/angular-strap/libs.min.css" rel="stylesheet" type="text/css">
+	<!-- <link href="assets/DatePicker/css/bootstrap_3.3.6.min.css" rel="stylesheet" type="text/css">
+	<link href="assets/DatePicker/css/font-awesome_4.5.css" rel="stylesheet" type="text/css"> -->
 
     <title>Smart Recruit</title>
     <style>
+		*{
+			outline:none !important;
+		}
         @media only screen and (max-width: 480px) {
             .header-top {
                 padding: 20px 0px !important;
@@ -44,54 +52,50 @@
     <script type="text/javascript" src="assets/libraries/cycle2/jquery.cycle2.min.js"></script>
     <script type="text/javascript" src="assets/libraries/cycle2/jquery.cycle2.carousel.min.js"></script>
     <script type="text/javascript" src="assets/libraries/countup/countup.min.js"></script>
- 
-
-
-
-<script src="bower_components/angular/angular.min.js"></script>
+	
+	<script src="bower_components/angular/angular.min.js"></script>
     <script  src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 	<script type="text/javascript" src="assets/js/LayoutJS/layout.js"></script>
-   <script type="text/javascript" src="assets/js/main.js"></script>
+    <script type="text/javascript" src="assets/js/main.js"></script>
+    <script type="text/javascript" src="assets/js/ControllerJS/registration.js"></script>
+	<script type="text/javascript" src="assets/js/ControllerJS/login.js"></script>	
+	<script type="text/javascript" src="assets/js/ControllerJS/createResume.js"></script>
+	<script type="text/javascript" src="assets/js/ControllerJS/applyEvaluation.js"></script>
+	<script type="text/javascript" src="assets/js/ControllerJS/evaluator.js"></script>
+    <script type="text/javascript" src="assets/js/Services/myApp.js"></script>
+
+    <script type="text/javascript" src="assets/js/Directives/commonDirective.js"></script>
+	<!-- <script type="text/javascript" src="assets/js/ControllerJS/apply_Evaluation.js"></script> -->
+	
+    <script type="text/javascript" src="assets/js/simple-autocomplete.js"></script>
+
+    <script type="text/javascript" src="assets/js/angular-sanitize.js"></script>
+	<script type="text/javascript" src="assets/js/massautocomplete.js"></script>
+	
+<!-- 	 <link rel="stylesheet" href="http://mbenford.github.io/ngTagsInput/css/ng-tags-input.min.css" />
+    <script src="http://mbenford.github.io/ngTagsInput/js/ng-tags-input.min.js"></script> -->
+	
+	<!-- datepicker JS -->
+	<script type="text/javascript" src="assets/DatePicker/js/angular-strap/angular-strap.docs.tpl.js"></script>
+	<script type="text/javascript" src="assets/DatePicker/js/angular-strap/angular-strap.js"></script>
+	<script type="text/javascript" src="assets/DatePicker/js/angular-strap/angular-strap.tpl.js"></script>
+	<!-- <script type="text/javascript" src="assets/DatePicker/js/angular_1.5.5.js"></script> -->
+	<script type="text/javascript" src="assets/DatePicker/js/angular-animate_1.5.5.min.js"></script>
+	<!-- <script type="text/javascript" src="assets/DatePicker/js/angular-sanitize_1.5.5.min.js"></script> -->
+	
 </head>
 
 <body class="hero-content-dark footer-dark">
-    <div class="page-wrapper" ng-app="myapp">
-       
-
-
-
-
-
-
-
-
-
-
+    <div class="page-wrapper" ng-app="myapp"> 
 	   <div class="header-wrapper">
 			<div ui-view="header"></div>
-	   </div><!-- /.header-wrapper-->
-	  
+	   </div><!-- /.header-wrapper-->	  
 		<div class="container" style="width: 100% !important;">
-			<div  class="container" ui-view="content" style="padding-top: 60px;">
-
-
-
-
-
-
-
-
-			</div>
-		</div>  
-	   
+			<div  class="container" ui-view="content" style="padding-top: 60px; width:100% !Important;"></div>
+		</div>  	   
         <div class="footer-wrapper">
               <div ui-view="footer"></div>
         </div><!-- /.footer-wrapper -->
     </div><!-- /.page-wrapper -->	
-	
-	
-	
-
-
 </body>
 </html>

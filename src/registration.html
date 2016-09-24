@@ -1,224 +1,431 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1">
-    <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" type="text/css">
-    <link href="assets/css/style.css" rel="stylesheet" type="text/css">
-    <link href="assets/libraries/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="assets/libraries/bootstrap-fileinput/css/fileinput.min.css" rel="stylesheet" type="text/css">
-    <link href="assets/libraries/bootstrap-select/css/bootstrap-select.min.css" rel="stylesheet" type="text/css">
-    <link href="assets/libraries/bootstrap-wysiwyg/bootstrap-wysiwyg.min.css" rel="stylesheet" type="text/css">
-    <link href="assets/css/black-green.css" rel="stylesheet" type="text/css" id="style-primary">
-    <link rel="shortcut icon" type="image/x-icon" href="assets/favicon.png">
+<!-- 
+<link href="~/assets/css/black-green.css" rel="stylesheet" type="text/css" id="style-primary">
+ -->
+<style>
+.input-help {
+        display: none;
+        position: absolute;
+        z-index: 100;
+        /*top: -6px;*/
+        /*left: 160px;*/
+        /*width: 200px;*/
+        width: 340px;
+        padding: 10px;
+        background: #fefefe;
+        font-size: .875em;
+        border-radius: 5px;
+        box-shadow: 0 1px 3px #aaa;
+        border: 1px solid #ddd;
+        opacity: 0.9;
+    }
 
-    <title>Smart Recruit</title>
-    <style>
-        @media only screen and (max-width: 480px) {
-            .header-top {
-                padding: 20px 0px !important;
-            }
+        /*.input-help::before {
+            content: "\25C0";
+            position: absolute;
+            top: 10px;
+            left: -12px;
+            font-size: 16px;
+            line-height: 16px;
+            color: #ddd;
+            text-shadow: none;
+        }*/
+
+        .input-help h4 {
+            margin: 0;
+            padding: 0;
+            font-weight: normal;
+            font-size: 1.1em;
         }
 
-        .header-top {
-            border-bottom: 2px solid #4c953f;
-            margin-bottom: 3px;
+    /* Always hide the input help when it's pristine */
+    input.ng-pristine + .input-help {
+        display: none;
+    }
+
+    .ng-invalid:not(:focus) + .input-help {
+        display: none;
+    }
+
+    /* Hide the invalid box while the input has focus */
+    /*.ng-invalid:focus + .input-help {
+        display: none;
+    }*/
+
+    /* Show a blue border while an input has focus, make sure it overrides everything else */
+    /* Overriding Twitter Bootstrap cuz I don't agree we need to alarm the user while they're typing */
+    input:focus {
+        color: black !important;
+        border-color: rgba(82, 168, 236, 0.8) !important;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6) !important;
+        -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6) !important;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6) !important;
+    }
+
+
+    /* Show green border when stuff has been typed in, and its valid */
+    .ng-dirty.ng-valid {
+        border-color: #3a7d34;
+    }
+
+    /* Show red border when stuff has been typed in, but its invalid */
+    .ng-dirty.ng-invalid {
+        border-color: #ec3f41;
+    }
+
+    /* Show the help box once it has focus */
+    .immediate-help:focus + .input-help {
+        display: block;
+    }
+
+    /* Immediate help should be red when pristine */
+    .immediate-help.ng-pristine:focus + .input-help {
+        border-color: #ec3f41;
+    }
+
+        .immediate-help.ng-pristine:focus + .input-help::before {
+            color: #ec3f41;
         }
-    </style>
 
-</head>
+    /* Help hould be green when input is valid */
+    .ng-valid + .input-help {
+        border-color: #3a7d34;
+    }
 
-<body class="hero-content-dark footer-dark">
-    <div class="page-wrapper">
-        <div class="header-wrapper">
-            <div class="header">
-                <div class="header-top" style="padding:0px 0px;">
-                    <div class="container">
-                        <div class="header-brand">
-                            <div class="header-logo">
-                                <a href="index.html">
-                                    <i class="#logo"></i>
-                                    <span class="header-logo-text">Smart <span class="header-logo-highlight">Recruit</span></span>
-                                </a>
-                            </div><!-- /.header-logo-->
-                            <div class="header-slogan">
-                                <span class="header-slogan-slash">/</span>
-                                <span class="header-slogan-text"><i>Makes You Smart</i></span>
-                            </div><!-- /.header-slogan-->
-                        </div><!-- /.header-brand -->
-                    </div><!-- /.container -->
-                </div><!-- /.header-top -->
-            </div><!-- /.header -->
-        </div><!-- /.header-wrapper-->
+        .ng-valid + .input-help::before {
+            color: #3a7d34;
+        }
 
-        <div class="main-wrapper">
-            <div class="main">
-                <div class="document-title">
-                    <div class="container">
-                        <h1 class="center">Account Registration</h1>
-                    </div><!-- /.container -->
-                </div><!-- /.document-title -->
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-12">
-                            <ul class="nav nav-tabs" role="tablist">
-                                <li role="presentation" class="active">
-                                    <a href="#personal" aria-controls="personal" role="tab" data-toggle="tab">
-                                        <strong>Personal Account</strong>
-                                        <span>create your account here</span>
-                                    </a>
-                                </li>
-                            </ul>
-                            <div class="tab-content">
-                                <div role="tabpanel" class="tab-pane active" id="personal">
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label for="form-register-username">Username</label>
-                                                <input type="text" class="form-control" id="form-register-username">
-                                            </div><!-- /.form-group -->
-                                            <div class="form-group">
-                                                <label for="form-register-email">E-mail</label>
-                                                <input type="email" class="form-control" id="form-register-email">
-                                            </div><!-- /.form-group -->
-                                            <div class="form-group">
-                                                <label for="form-register-password">Password</label>
-                                                <input type="password" class="form-control" id="form-register-password">
-                                            </div><!-- /.form-group -->
-                                            <div class="form-group">
-                                                <label for="form-register-retype">Retype Password</label>
-                                                <input type="password" class="form-control" id="form-register-retype">
-                                            </div><!-- /.form-group -->
-                                        </div><!-- /.col-* -->
-                                        <div class="col-sm-6">
-                                            <div class="row">
-                                                <div class="form-group col-sm-6">
-                                                    <label for="form-register-first-name">First Name</label>
-                                                    <input type="text" class="form-control" id="form-register-first-name">
-                                                </div><!-- /.form-group -->
-                                                <div class="form-group col-sm-6">
-                                                    <label for="form-login-surname">Surname</label>
-                                                    <input type="text" class="form-control" id="form-register-username">
-                                                </div><!-- /.form-group -->
-                                            </div><!-- /.row -->
-                                            <div class="form-group">
-                                                <label form="form-register-photo">Profile Picture</label>
-                                                <input type="file" name="form-register-photo" id="form-register-photo">
-                                            </div><!-- /.form-group-->
-                                        </div><!-- /.col-* -->
-                                    </div><!-- /.row -->
-                                    <div class="center">
-                                        <div class="checkbox checkbox-info">
-                                            <label><input type="checkbox"> By signing up, you agree with the <a href="#">terms and conditions</a></label>
-                                        </div><!-- /.checkbox -->
-                                        <button id="btnCreateAccount" type="submit" class="btn btn-secondary">Create an Account</button>
-                                    </div><!-- /.center -->
-                                </div><!-- /.tab-pane -->
-                   
-                            </div><!-- /.tab-content -->
-                        </div><!-- /.col-* -->
-                    </div><!-- /.row -->
-                </div><!-- /.container -->
-            </div><!-- /.main -->
-        </div><!-- /.main-wrapper -->
+    /* Help should show and be red when invalid */
+    .ng-invalid + .input-help {
+        display: block;
+        border-color: #ec3f41;
+    }
 
-        <div class="footer-wrapper">
-            <div class="footer">
-                <div class="footer-top">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-sm-5">
-                                <div class="footer-top-block">
-                                    <h2><i class="#logo"></i> Smart Recruit</h2>
-                                    <p>
-                                        Well trusted and verified organisations all around the world are using our job platform to find best employees.
-                                    </p>
-                                    <ul class="social-links">
-                                        <li><a href="https://www.facebook.com/" target="_blank"><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href="https://www.linkedin.com/" target="_blank"><i class="fa fa-linkedin"></i></a></li>
-                                    </ul>
-                                </div><!-- /.footer-top-block -->
-                            </div><!-- /.col-* -->
-                            <div class="col-sm-3 col-sm-offset-1">
-                                <div class="footer-top-block">
-                                    <h2>Helpful Links</h2>
-                                    <ul>
-                                        <li><a href="#">About Us</a></li>
-                                        <li><a href="#">Support</a></li>
-                                        <li><a href="#">Terms &amp; Conditions</a></li>
-                                        <li><a href="#">Contact</a></li>
-                                    </ul>
-                                </div><!-- /.footer-top-block -->
-                            </div><!-- /.col-* -->
-                            <div class="col-sm-3">
-                                <div class="footer-top-block">
-                                    <h2>Trending Jobs</h2>
-                                    <ul>
-                                        <li><a href="#">Android Developer</a></li>
-                                        <li><a href="#">Senior Teamleader</a></li>
-                                        <li><a href="#">iOS Developer</a></li>
-                                        <li><a href="#">Node.js Developer</a></li>
-                                    </ul>
-                                </div><!-- /.footer-top-left -->
-                            </div><!-- /.col-* -->
-                        </div><!-- /.row -->
-                    </div><!-- /.container -->
-                </div><!-- /.footer-top -->
-                <div class="footer-bottom">
-                    <div class="container">
-                        <div class="footer-bottom-left">
-                            &copy; <a href="#">Smart Recruit</a>, 2016 All rights reserved.
-                        </div><!-- /.footer-bottom-left -->
-                        <div class="footer-bottom-right">
-                            Created by <a href="http://vts.in/" target="_blank">VTS</a>
-                        </div><!-- /.footer-bottom-right -->
-                    </div><!-- /.container -->
-                </div><!-- /.footer-bottom -->
-            </div><!-- /.footer -->
-        </div><!-- /.footer-wrapper -->
-    </div><!-- /.page-wrapper -->
+        .ng-invalid + .input-help::before {
+            color: #ec3f41;
+        }
+
+    /* Style input help requirement bullets */
+    .input-help ul {
+        list-style: none;
+        margin: 10px 0 0 0;
+    }
+
+    /* Default each bullet to be invalid with a red cross and text */
+    .input-help li {
+        padding-left: 22px;
+        line-height: 24px;
+        color: #ec3f41;
+        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAA1CAYAAABIkmvkAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAAJwAAACcBKgmRTwAAABZ0RVh0Q3JlYXRpb24gVGltZQAxMC8wOS8xMlhq+BkAAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzVxteM2AAAEA0lEQVRIie2WW2jbVRzHv//zT5rkn0ub61zaNdEiPqTC9EFRhtgJk63qg3Wr0806pswNiYgDUXxwyryCEB8UBevtaSCCDHQoboKyoVvVzfRmL2napU0mrdbl8s//dy4+dM1M28n64FsPnIdz+XzO75zfOXA0pRRWU7o/uS9FxOc+3/vlIQBgq4F3fHxvKuIPJ9cFwi9uTXU8BwDa1Uaw/aN7UusCkWRbPI5yxcTI2Bgy49kXrkrwwIedqYg/nGyLXwsJiYHBYWTGs7Cq5Kpt4cA3PXft+2rX40vhrt7OVLgplIzHYuBKoH9gCKMjGVE1LdfJl86YDAAOfN2ziZP4NODyv9/z2fanFuH7P9iWCjcFk/FYK4QSGLgEk0WeUy/3mQCgPXFs9xbBRW883NrssDvQN3hWcOLPEPGWiD94MBaPQymBoaERjI9mBSfu+fHwL+biItpjR3e6JFfloDeAaGQ9SpUycvlp6ExHJBKGYsDvgyMYH81KTsL90yuX4VoWdh3pMqSQpWBjAC3RZkgpYEkCFDA8NIqJ0UlFxI3Tr/5aB9elsau305BcloKBAFpjLeBSYGRwDBNjk4oTN06/dnYZXCcAgK1vbzYkl6VwOATihOzYlOLEjTOvn1sRXiYAgDsP32YIKUuWaXFOwtP3xrnqleAVBQBwy/M3GZy4+PnN3/4TvqJgNWVVj2lNsCZYE6wJ1gRrgv9dYAMAHHw2Bl2fUEpBVavtLPVW/78nVR/Zk4CupzVHA6zChSOK0yHv0S8GFyK4BMPhAJxOgLE03/9kYhE2dz+agKaldY8bDaEQ7D5ft7Roy+UIlCooy5LQdaZ5vVBEgGmmrT172yVxaIylmdcDm9cHc2oK1Zm8kETvLAo0pRRk8mmnEqKouVw68zVCzP8F/uccFHHoXi/sjT6Y53Mw83mhOHn8J7416wQAwPftd0ouiswwdJu/CRASkBKQAmYuBzNfWIC/O173W6llwfbeu6Yi8tDsrAQJYGICyGQAIWDO5KUkaxlcJwAASdSmaWAQHCACOAc4h6YzJi1qWymNNUHlwYcT0JDWXQbACYhGgeh6gHM4Ghuh2/R0YePNiaUCTSmFcvdDCY1paZvhht3nQ2VmGmahICSR5vQHmDt6DcozeZSnp2FdLLZHhwdq94SVd+xMaJqWtrkM2L1uVHILpy0t8igidymXExfHMzBCQbhCIdga7Onz8etqkdgkUYTZbYCSqORmULlQEIq4J3jyexMA8jdu9BRzuaKyLN3udkNjDEqICID+2hbm797Wwez24/T3vJTE3aFTP9Sd9vT1NziVEMUGr1c35+Y2b5jKnqgNKqWglMLspjs6/rj1dudie2mdao07J5s3dCzt/werJTyI1yYqpQAAAABJRU5ErkJggg==) no-repeat 2px -34px;
+    }
+
+        /* Set to green check and text when valid */
+        .input-help li.valid {
+            color: #3a7d34;
+            background-position: 2px 6px;
+        }
+
+    /* Set submit button */
+    form .btn, form.ng-valid .btn[disabled] {
+        display: none;
+    }
+
+    form.ng-invalid .btn[disabled], form.ng-valid .btn {
+        display: inline-block;
+    }
+
+  /*  body {
+        padding: 20px 0;
+    } 
+http://192.168.1.51:8080
+    input {
+        width: 166px;
+    }
+
+    .form-horizontal .control-label {
+        width: 100px;
+    }
+
+    .form-horizontal .controls {
+        position: relative;
+        margin-left: 120px;
+    }*/
 
 
-    <script type="text/javascript" src="assets/js/jquery.js"></script>
+    .file-drop-zone-title {
+    background-color: #f7f7f7;
+    border-radius: 3px;
+    margin: -10px; 
+    padding: 42px 0px 42px 0px;
+}
+</style>
+
+
+<div class="main" ng-controller="RegistrationController" style="padding-top: 0px !important;">
+
+<div class="document-title">
+	<div class="container">
+		<h1 class="center">Account Registration</h1>
+	</div><!-- /.container -->
+</div><!-- /.document-title -->
+<div class="container">
+	<div class="row">
+		<div class="col-sm-12">
+			<ul class="nav nav-tabs" role="tablist">
+				<li role="presentation" class="active">
+					<a aria-controls="personal" role="tab" data-toggle="tab">
+						<strong>Personal Account</strong>
+						<span>create your account here</span>
+					</a>
+				</li>
+			</ul>
+			<div class="tab-content">
+				<div role="tabpanel" class="tab-pane active" id="personal">
+
+
+<div class="row">
+						<div class="col-sm-6">
+                            	<div class="form-group">
+									<label for="form-register-first-name">First Name</label>
+									<input type="text" class="form-control" id="form-register-first-name" data-ng-model="accountRegistration.firstName">
+							</div><!-- /.form-group -->
+                            </div>
+
+                           <div class="col-md-6">
+							<style>
+.input-help {
+        display: none;
+        position: absolute;
+        z-index: 100;
+        /*top: -6px;*/
+        /*left: 160px;*/
+        /*width: 200px;*/
+        width: 340px;
+        padding: 10px;
+        background: #fefefe;
+        font-size: .875em;
+        border-radius: 5px;
+        box-shadow: 0 1px 3px #aaa;
+        border: 1px solid #ddd;
+        opacity: 0.9;
+    }
+
+        /*.input-help::before {
+            content: "\25C0";
+            position: absolute;
+            top: 10px;
+            left: -12px;
+            font-size: 16px;
+            line-height: 16px;
+            color: #ddd;
+            text-shadow: none;
+        }*/
+
+        .input-help h4 {
+            margin: 0;
+            padding: 0;
+            font-weight: normal;
+            font-size: 1.1em;
+        }
+
+    /* Always hide the input help when it's pristine */
+    input.ng-pristine + .input-help {
+        display: none;
+    }
+
+    .ng-invalid:not(:focus) + .input-help {
+        display: none;
+    }
+
+    /* Hide the invalid box while the input has focus */
+    /*.ng-invalid:focus + .input-help {
+        display: none;
+    }*/
+
+    /* Show a blue border while an input has focus, make sure it overrides everything else */
+    /* Overriding Twitter Bootstrap cuz I don't agree we need to alarm the user while they're typing */
+    input:focus {
+        color: black !important;
+        border-color: rgba(82, 168, 236, 0.8) !important;
+        -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6) !important;
+        -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6) !important;
+        box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6) !important;
+    }
+
+
+    /* Show green border when stuff has been typed in, and its valid */
+    .ng-dirty.ng-valid {
+        border-color: #3a7d34;
+    }
+
+    /* Show red border when stuff has been typed in, but its invalid */
+    .ng-dirty.ng-invalid {
+        border-color: #ec3f41;
+    }
+
+    /* Show the help box once it has focus */
+    .immediate-help:focus + .input-help {
+        display: block;
+    }
+
+    /* Immediate help should be red when pristine */
+    .immediate-help.ng-pristine:focus + .input-help {
+        border-color: #ec3f41;
+    }
+
+        .immediate-help.ng-pristine:focus + .input-help::before {
+            color: #ec3f41;
+        }
+
+    /* Help hould be green when input is valid */
+    .ng-valid + .input-help {
+        border-color: #3a7d34;
+    }
+
+        .ng-valid + .input-help::before {
+            color: #3a7d34;
+        }
+
+    /* Help should show and be red when invalid */
+    .ng-invalid + .input-help {
+        display: block;
+        border-color: #ec3f41;
+    }
+
+        .ng-invalid + .input-help::before {
+            color: #ec3f41;
+        }
+
+    /* Style input help requirement bullets */
+    .input-help ul {
+        list-style: none;
+        margin: 10px 0 0 0;
+    }
+
+    /* Default each bullet to be invalid with a red cross and text */
+    .input-help li {
+        padding-left: 22px;
+        line-height: 24px;
+        color: #ec3f41;
+        background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAA1CAYAAABIkmvkAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAAJwAAACcBKgmRTwAAABZ0RVh0Q3JlYXRpb24gVGltZQAxMC8wOS8xMlhq+BkAAAAcdEVYdFNvZnR3YXJlAEFkb2JlIEZpcmV3b3JrcyBDUzVxteM2AAAEA0lEQVRIie2WW2jbVRzHv//zT5rkn0ub61zaNdEiPqTC9EFRhtgJk63qg3Wr0806pswNiYgDUXxwyryCEB8UBevtaSCCDHQoboKyoVvVzfRmL2napU0mrdbl8s//dy4+dM1M28n64FsPnIdz+XzO75zfOXA0pRRWU7o/uS9FxOc+3/vlIQBgq4F3fHxvKuIPJ9cFwi9uTXU8BwDa1Uaw/aN7UusCkWRbPI5yxcTI2Bgy49kXrkrwwIedqYg/nGyLXwsJiYHBYWTGs7Cq5Kpt4cA3PXft+2rX40vhrt7OVLgplIzHYuBKoH9gCKMjGVE1LdfJl86YDAAOfN2ziZP4NODyv9/z2fanFuH7P9iWCjcFk/FYK4QSGLgEk0WeUy/3mQCgPXFs9xbBRW883NrssDvQN3hWcOLPEPGWiD94MBaPQymBoaERjI9mBSfu+fHwL+biItpjR3e6JFfloDeAaGQ9SpUycvlp6ExHJBKGYsDvgyMYH81KTsL90yuX4VoWdh3pMqSQpWBjAC3RZkgpYEkCFDA8NIqJ0UlFxI3Tr/5aB9elsau305BcloKBAFpjLeBSYGRwDBNjk4oTN06/dnYZXCcAgK1vbzYkl6VwOATihOzYlOLEjTOvn1sRXiYAgDsP32YIKUuWaXFOwtP3xrnqleAVBQBwy/M3GZy4+PnN3/4TvqJgNWVVj2lNsCZYE6wJ1gRrgv9dYAMAHHw2Bl2fUEpBVavtLPVW/78nVR/Zk4CupzVHA6zChSOK0yHv0S8GFyK4BMPhAJxOgLE03/9kYhE2dz+agKaldY8bDaEQ7D5ft7Roy+UIlCooy5LQdaZ5vVBEgGmmrT172yVxaIylmdcDm9cHc2oK1Zm8kETvLAo0pRRk8mmnEqKouVw68zVCzP8F/uccFHHoXi/sjT6Y53Mw83mhOHn8J7416wQAwPftd0ouiswwdJu/CRASkBKQAmYuBzNfWIC/O173W6llwfbeu6Yi8tDsrAQJYGICyGQAIWDO5KUkaxlcJwAASdSmaWAQHCACOAc4h6YzJi1qWymNNUHlwYcT0JDWXQbACYhGgeh6gHM4Ghuh2/R0YePNiaUCTSmFcvdDCY1paZvhht3nQ2VmGmahICSR5vQHmDt6DcozeZSnp2FdLLZHhwdq94SVd+xMaJqWtrkM2L1uVHILpy0t8igidymXExfHMzBCQbhCIdga7Onz8etqkdgkUYTZbYCSqORmULlQEIq4J3jyexMA8jdu9BRzuaKyLN3udkNjDEqICID+2hbm797Wwez24/T3vJTE3aFTP9Sd9vT1NziVEMUGr1c35+Y2b5jKnqgNKqWglMLspjs6/rj1dudie2mdao07J5s3dCzt/werJTyI1yYqpQAAAABJRU5ErkJggg==) no-repeat 2px -34px;
+    }
+
+        /* Set to green check and text when valid */
+        .input-help li.valid {
+            color: #3a7d34;
+            background-position: 2px 6px;
+        }
+
+    /* Set submit button */
+    form .btn, form.ng-valid .btn[disabled] {
+        display: none;
+    }
+
+    form.ng-invalid .btn[disabled], form.ng-valid .btn {
+        display: inline-block;
+    }
+
+  /*  body {
+        padding: 20px 0;
+    } 
+http://192.168.1.51:8080
+    input {
+        width: 166px;
+    }
+
+    .form-horizontal .control-label {
+        width: 100px;
+    }
+
+    .form-horizontal .controls {
+        position: relative;
+        margin-left: 120px;
+    }*/
+
+
+    .file-drop-zone-title {
+    background-color: #f7f7f7;
+    border-radius: 3px;
+    margin: -10px; 
+    padding: 42px 0px 42px 0px;
+}
+</style>
+									<label for="form-register-surname">Surname</label>
+									<input type="text" class="form-control" id="form-register-surname" data-ng-model="accountRegistration.surname">
+								</div><!-- /.form-group -->
+                            </div>
+
+					<div class="row">
+						<div class="col-sm-6">
+						
+							<div class="form-group">
+								<label for="form-register-email">E-mail</label>
+								<input type="email" class="form-control" id="form-register-email" data-ng-model="accountRegistration.email" email-validate>
+								<div class="input-help">
+									<h4>Email must meet the following requirements:</h4>
+									<ul>
+										<li ng-class="emailHasAt">must contain <strong>@</strong> symbol </li>
+										<li ng-class="emailHasDot">must contain<strong> dot (.)</strong> symbol</li>
+										<li ng-class="emailValid">must be in correct format</li>
+									</ul>
+								</div>
+							</div><!-- /.form-group -->
+							<div class="form-group">
+								<label for="form-register-password">Password</label>
+								<input type="password" class="form-control" id="form-register-password" data-ng-model="accountRegistration.password" password-validate>
+								<div class="input-help">
+									<h4>Password must meet the following requirements:</h4>
+									<ul>
+										<li ng-class="pwdHasLowerLetter">At least <strong>one lower case letter [a-z]</strong></li>
+										<li ng-class="pwdHasUpperLetter">At least <strong>one upper case letter [A-Z]</strong></li>
+										<li ng-class="pwdHasNumber">At least <strong>one numeric character [0-9]</strong></li>
+										<li ng-class="pwdHasSpecialCharacter">At least <strong>one special character</strong></li>
+										<li ng-class="pwdValidLength">should have <strong>min 8 characters and max 16 characters</strong></li>
+									</ul>
+								</div>
+							</div><!-- /.form-group -->
+							<div class="form-group">
+								<label for="form-register-retype">Retype Password</label>
+								<input type="password" class="form-control" id="form-register-retype" data-ng-model="accountRegistration.rePassword" compare-to="accountRegistration.password">
+								<!-- <label ng-model="errormsg" style="color:red;">{{errormsg}}</label> -->
+							</div><!-- /.form-group -->
+						</div><!-- /.col-* -->
+						<div class="col-sm-6">
+							<div class="row">
+								
+					</div>
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-8">
+							<div class="form-group">
+								<label form="form-register-photo">Profile Picture</label>
+								<!-- <input type="file" name="form-register-photo" id="form-register-photo" data-ng-model="accountRegistration.Profilepic" data-ng-change="selectFileforUpload(this.files)"> -->
+								
+								<input type="file" name="form-register-photo" id="form-register-photo" data-ng-model="accountRegistration.profilePic" onchange="angular.element(this).scope().selectFileforUpload(this.files)">
+							</div><!-- /.form-group-->
+                            </div>
+						</div><!-- /.col-* -->
+					</div><!-- /.row -->
+					<div class="center">
+						<div class="checkbox checkbox-info">
+							<label><input type="checkbox" data-ng-model="accountRegistration.isChecked"  ng-init="accountRegistration.isChecked = unChecked" style="width: 0px !important;"> By signing up, you agree with the <a href="#">terms and conditions</a></label>
+						</div><!-- /.checkbox -->
+						<button id="btnCreateAccount" type="button" class="btn btn-secondary" data-ng-click="RegistrationAccount(accountRegistration)">Create an Account</button>
+						<div><label style="color:#ec3f41;">{{errorMessage}}</label></div>
+                        <div><label style="color:green;">{{successMessage}}</label></div>
+						<!-- <button id="btntest" type="submit" class="btn btn-secondary" data-ng-click="register()">Create</button> -->
+					</div><!-- /.center -->
+				</div><!-- /.tab-pane -->   
+			</div><!-- /.tab-content -->
+		</div><!-- /.col-* -->
+	</div><!-- /.row -->
+</div><!-- /.container -->
+</div><!-- /.main -->
+
+ <script type="text/javascript" src="assets/js/jquery.js"></script>
     <script type="text/javascript" src="assets/js/jquery.ezmark.js"></script>
-    <script type="text/javascript" src="assets/libraries/bootstrap-sass/javascripts/bootstrap/collapse.js"></script>
-    <script type="text/javascript" src="assets/libraries/bootstrap-sass/javascripts/bootstrap/dropdown.js"></script>
-    <script type="text/javascript" src="assets/libraries/bootstrap-sass/javascripts/bootstrap/tab.js"></script>
-    <script type="text/javascript" src="assets/libraries/bootstrap-sass/javascripts/bootstrap/transition.js"></script>
     <script type="text/javascript" src="assets/libraries/bootstrap-fileinput/js/fileinput.min.js"></script>
     <script type="text/javascript" src="assets/libraries/bootstrap-select/js/bootstrap-select.min.js"></script>
     <script type="text/javascript" src="assets/libraries/bootstrap-wysiwyg/bootstrap-wysiwyg.min.js"></script>
-    <script type="text/javascript" src="assets/libraries/cycle2/jquery.cycle2.min.js"></script>
-    <script type="text/javascript" src="assets/libraries/cycle2/jquery.cycle2.carousel.min.js"></script>
-    <script type="text/javascript" src="assets/libraries/countup/countup.min.js"></script>
     <script type="text/javascript" src="assets/js/main.js"></script>
-<script type="text/javascript">
-        //for change password- getting mail at id in the link
-        function getUrlVars() {
-            var vars = [], hash;
-            var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-            for (var i = 0; i < hashes.length; i++) {
-                hash = hashes[i].split('=');
-                vars.push(hash[0]);
-                vars[hash[0]] = hash[1];
-            }
-            return vars;
-        }
-
-        $(document).ready(function () {
-            var eId = getUrlVars()["id"];
-
-            $("#btnCreateAccount").click(function () {
-                if (eId == "candi" || eId == "eval") {
-                    location.href = "create-resume.html";
-                }
-                else if (eId == "comp") {
-                    location.href = "candidates.html";
-                }
-            });
-        });
-    </script>
-</body>
-</html>
+    <script type="text/javascript" src="assets/js/Directives/commonDirective.js"></script>
+	

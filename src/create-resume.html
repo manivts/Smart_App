@@ -1,0 +1,596 @@
+﻿
+<style>
+.container{
+	padding-top: 0px !important;
+}
+.edit{
+	cursor:pointer;
+	color: #55a747;
+}
+.fa-plus-square-o{
+	padding-left: 10px;
+	cursor:pointer;
+	color: #55a747;
+}
+.btnUpdate{
+	background-color: rgb(85, 167, 71);
+	color: white;
+	margin-top: 10px;
+	margin-right: 10px;
+}
+.ac-container{
+	position: absolute !important;
+	top: 57px !important;
+	left: 15px !important;
+}
+.page-header {   
+    border-bottom: 2px solid #b3b3b3;
+}
+
+.datepicker .btn-primary {
+    color: #fff;
+    background-color: #55a747 !important;
+}
+.datepicker .btn-info {
+    color: #fff;
+    background-color:#277718;
+}
+.dropdown-menu{
+	max-height: 285px !important;
+}
+.btn-primary {
+    color: #fff;
+    background-color: #313131;
+    border-color: #313131;
+}
+
+</style>
+<div class="page-wrapper" data-ng-controller='CreateResumeController'>
+	<div class="main-wrapper">
+		<div class="main" style="padding-top: 30px;">
+			<div class="container">
+				<h3 class="text-center" style="margin-top: 0px; margin-bottom: 41px;">Create Profile</h3>
+
+				<div class="col-sm-9" style="margin-top: -47px;">
+
+					<form method="get" action="#create-resume.html?">
+						<h3 class="page-header" id="BasicInfo">Basic Information <div style="float:right;"><i class="fa fa-edit edit" data-ng-click="EditBasicInfo()" data-ng-show="basicinfo" title="Edit"></i></div></h3>
+						
+						<div class="row">
+							<div class="col-sm-5">
+								<div class="form-group">
+									<label form="form-register-photo">Profile Picture</label>
+									<input type="file" name="form-register-photo" id="form-register-photo" data-ng-model="basicInfo.profilePic" onchange="angular.element(this).scope().selectFileforUpload(this.files)">
+								</div><!-- /.form-group-->
+							</div><!-- /.col-* -->
+							<div class="col-sm-7">
+								<div class="form-group">
+									<label>First Name</label>
+									<input type="text" class="form-control" data-ng-model="basicInfo_firstName"  data-ng-readonly="basicinfo">
+								</div><!-- /.form-group -->								
+								<div class="form-group">
+									<label>Surname</label>
+									<input type="text" class="form-control" data-ng-model="basicInfo_surname"  data-ng-readonly="basicinfo">
+								</div><!-- /.form-group -->
+							</div><!-- /.col-* -->
+						</div><!-- /.row -->
+						
+						<div class="row"><button type="button" class="btn btnUpdate" style="float:right;padding:2px !important;" data-ng-click="UpdateBasicInfo()" data-ng-hide="basicinfo">Update</button></div>
+						<hr>
+						<h3 class="page-header" id="ContactInfo">Contact Information<div style="float:right;"><i class="fa fa-edit edit" data-ng-click="EditContactInfo()" data-ng-show="contactinfo" title="Edit"></i></div></h3>
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label>Country</label>
+									<input type="text" class="form-control" data-ng-model="contactInfo_country" data-ng-readonly="contactinfo">
+								</div><!-- /.form-group -->
+							</div><!-- /.col-* -->
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label>City</label>
+									<input type="text" class="form-control" data-ng-model="contactInfo_city" data-ng-readonly="contactinfo">
+								</div><!-- /.form-group -->
+							</div><!-- /.col-* -->
+							<div class="col-sm-10">
+								<div class="form-group">
+									<label>Address</label>
+									<input type="text" class="form-control" data-ng-model="contactInfo_address" data-ng-readonly="contactinfo">
+								</div><!-- /.form-group -->
+							</div><!-- /.col-* -->
+							<div class="col-sm-2">
+								<div class="form-group">
+									<label>ZIP Code</label>
+									<input type="text" class="form-control" data-ng-model="contactInfo_zipcode" data-ng-readonly="contactinfo">
+								</div><!-- /.form-group -->
+							</div><!-- /.col-* -->
+
+
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label>Phone</label>
+									<input type="text" class="form-control" data-ng-model="contactInfo_phone" data-ng-readonly="contactinfo">
+								</div><!-- /.form-group -->
+							</div><!-- /.col-* -->
+							<div class="col-sm-6">
+								<div class="form-group">
+									<label>E-mail</label>
+									<input type="text" class="form-control" data-ng-model="contactInfo_email" data-ng-readonly=true>
+								</div><!-- /.form-group -->
+							</div><!-- /.col-* -->
+
+						</div><!-- /.row -->
+						<div class="row"><button type="button" class="btn btnUpdate" style="float:right;padding:2px !important;" data-ng-click="UpdateContactInfo()" data-ng-hide="contactinfo">Update</button></div>
+						<hr>
+						<h3 class="page-header" id="BioInfo">Summary <div style="float:right;"><i class="fa fa-edit edit" data-ng-click="EditSummary()" data-ng-show="smry" title="Edit"></i></div></h3>
+						<div class="form-group">
+							<div data-ng-model="summary_uid" style="display:none">{{summary_uid}}</div>							
+							<textarea  class="form-control" data-ng-model="summary_notes" data-ng-readonly="smry"></textarea>
+						</div><!-- /.form-group -->
+						<div class="row"><button type="button" class="btn btnUpdate" style="float:right;padding:2px !important;" data-ng-click="UpdateSummary()" data-ng-hide="smry">Update</button></div>
+<hr>
+
+						<h3 class="page-header" id="KeyInfo">Key Skills <div style="float:right;"><i class="fa fa-edit edit" data-ng-click="EditKeyskills()" data-ng-show="keyskills" title="Edit"></i></div></h3>
+						<div class="row">
+							<div class="form-group">
+								<div class="col-sm-6">
+									<label>Industry</label>
+									
+									<select class="form-control" data-ng-model="keyskill_Industry" data-ng-init="keyskill_Industry=indstry" id="selectKeyskill">
+										<option value="8">Accounting/Finance/CreateProfilence</option>
+										<option value="32">Advertising/PR/MR/Events</option>
+										<option value="33">Agriculture/Dairy</option>
+										<option value="56">Animation</option>
+										<option value="30">Architecture/Interior Designing</option>
+										<option value="4">Auto/Auto Ancillary</option>
+										<option value="46">Aviation / Aerospace Firms</option>
+										<option value="14">Banking/Financial Services/Broking</option>
+										<option value="7">BPO/ITES</option>
+										<option value="50">Brewery / Distillery</option>
+										<option value="65">Broadcasting</option>
+										<option value="60">Ceramics /Sanitary ware</option>
+										<option value="6">Chemicals/PetroChemical/Plastic/Rubber</option>
+										<option value="12">Construction/Engineering/Cement/Metals</option>
+										<option value="10">Consumer Durables</option>
+										<option value="18">Courier/Transportation/Freight</option>
+										<option value="42">Defence/Government</option>
+										<option value="26">Education/Teaching/Training</option>
+										<option value="55">Electricals / Switchgears</option>
+										<option value="13">Export/Import</option>
+										<option value="47">Facility Management</option>
+										<option value="41">Fertilizers/Pesticides</option>
+										<option value="9">FMCG/Foods/Beverage</option>
+										<option value="57">Food Processing</option>
+										<option value="31">Fresher/Trainee</option>
+										<option value="35">Gems &amp; Jewellery</option>
+										<option value="49">Glass</option>
+										<option value="61">Heat Ventilation Air Conditioning</option>
+										<option value="2">Hotels/Restaurants/Airlines/Travel</option>
+										<option value="16">Industrial Products/Heavy Machinery</option>
+										<option value="17">Insurance</option>
+										<option value="63">Internet/Ecommerce</option>
+										<option value="15">IT-Hardware &amp; Networking</option>
+										<option value="25">IT-Software/Software Services</option>
+										<option value="48">KPO / Research /Analytics</option>
+										<option value="66">Leather</option>
+										<option value="36">Legal</option>
+										<option value="19">Media/Dotcom/Entertainment</option>
+										<option value="20">Medical/Healthcare/Hospital</option>
+										<option value="54">Mining</option>
+										<option value="37">NGO/Social Services</option>
+										<option value="21">Office Equipment/Automation</option>
+										<option value="23">Oil and Gas/Power/Infrastructure/Energy</option>
+										<option value="43">Paper</option>
+										<option value="22">Pharma/Biotech/Clinical Research</option>
+										<option value="38">Printing/Packaging</option>
+										<option value="58">Publishing</option>
+										<option value="39">Real Estate/Property</option>
+										<option value="34">Recruitment</option>
+										<option value="24">Retail</option>
+										<option value="40">Security/Law Enforcement</option>
+										<option value="28">Semiconductors/Electronics</option>
+										<option value="44">Shipping/Marine</option>
+										<option value="53">Steel</option>
+										<option value="52">Strategy /Management Consulting Firms</option>
+										<option value="64">Sugar</option>
+										<option value="27">Telcom/ISP</option>
+										<option value="3">Textiles/Garments/Accessories</option>
+										<option value="45">Tyres</option>
+										<option value="51">Water Treatment / Waste Management</option>
+										<option value="59">Wellness/Fitness/Sports</option>
+										<option value="29">Other</option>
+									</select>
+								</div>
+								<div class="col-sm-6">
+									<label>Functional Area</label>
+									<select class="form-control"  data-ng-model="keyskill_FunctionaArea" data-ng-init="keyskill_FunctionaArea=funcnlArea">
+										<option value="1">Accounts / Finance / Tax / CS / Audit</option>
+										<option value="46">Agent</option>
+										<option value="81">Analytics &amp; Business Intelligence</option>
+										<option value="2">Architecture / Interior Design</option>
+										<option value="6">Banking / Insurance</option>
+										<option value="5">Content / Journalism</option>
+										<option value="7">Corporate Planning / Consulting</option>
+										<option value="21">Engineering Design / R&amp;D</option>
+										<option value="10">Export / Import / Merchandising</option>
+										<option value="42">Fashion / Garments / Merchandising</option>
+										<option value="45">Guards / Security Services</option>
+										<option value="4">Hotels / Restaurants</option>
+										<option value="12">HR / Administration / IR</option>
+										<option value="62">I Software - Client Server</option>
+										<option value="72">IT Software - Mainframe</option>
+										<option value="74">IT Software - Middleware</option>
+										<option value="73">IT Software - Mobile</option>
+										<option value="75">IT Software - Other</option>
+										<option value="68">IT Software - System Programming</option>
+										<option value="69">IT Software - Telecom Software</option>
+										<option value="61">IT Software - Application Programming / Maintenance</option>
+										<option value="63">IT Software - DBA / Datawarehousing</option>
+										<option value="71">IT Software - E-Commerce / Internet Technologies</option>
+										<option value="65">IT Software - Embedded /EDA /VLSI /ASIC /Chip Des.</option>
+										<option value="64">IT Software - ERP / CRM</option>
+										<option value="66">IT Software - Network Administration / Security</option>
+										<option value="67">IT Software - QA &amp; Testing</option>
+										<option value="70">IT Software - Systems / EDP / MIS</option>
+										<option value="37">IT- Hardware / Telecom / Technical Staff / Support</option>
+										<option value="8">ITES / BPO / KPO / Customer Service / Operations</option>
+										<option value="13">Legal</option>
+										<option value="15">Marketing / Advertising / MR / PR</option>
+										<option value="18">Packaging</option>
+										<option value="16">Pharma / Biotech / Healthcare / Medical / R&amp;D</option>
+										<option value="19">Production / Maintenance / Quality</option>
+										<option value="14">Purchase / Logistics / Supply Chain</option>
+										<option value="22">Sales / BD</option>
+										<option value="11">Secretary / Front Office / Data Entry</option>
+										<option value="9">Self Employed / Consultants</option>
+										<option value="82">Shipping</option>
+										<option value="20">Site Engineering / Project Management</option>
+										<option value="36">Teaching / Education</option>
+										<option value="44">Ticketing / Travel / Airlines</option>
+										<option value="39">Top Management</option>
+										<option value="43">TV / Films / Production</option>
+										<option value="3">Web / Graphic Design / Visualiser</option>
+										<option value="41">Other</option>
+									</select>
+								</div>
+							</div><!-- /.form-group -->
+
+							
+							<div class="form-group" style="padding-left: 15px; padding-right: 15px;">
+								<div class="col-sm-12" style="background-color: rgb(246, 246, 246); top: 10px;">
+										<div class="col-sm-7">
+											<br />
+											<label>Skills</label>
+										</div>
+										<div class="col-sm-2">
+											<br />
+											<label>Experience (In month)</label>
+										</div>
+										<div class="col-sm-2">
+											<br />
+											<label>Rating(1-10)</label>
+										</div>
+										<div class="col-sm-1">
+											<br />
+											<label></label>
+										</div>
+								</div>
+								<div data-ng-repeat="skill in skills track by $index">
+									<div class="col-sm-12" style="background-color: rgb(246, 246, 246); top: 10px;" >
+										<div class="col-sm-7">
+											<br />	
+											<div style="display:none"><input ng-model="skill.uid" >{{$index}}{{skill.uid}}</input></div>						
+										    <div mass-autocomplete>
+												<input type="text" class="form-control" ng-model="skill.skillnames" mass-autocomplete-item="autocomplete_skillOptions" data-ng-readonly="keyskills">
+											</div>
+										
+										</div>
+										<div class="col-sm-2">										
+											<br />
+											<!-- <select class="form-control"  data-ng-model="skill.yearsofexp" ng-init="skill.yearsofexp = skill.yoexp">
+												<option value="1" >0 - 1 Year</option>
+												<option value="2">1 - 2 Years</option>
+												<option value="3">2 - 3 Years</option>
+												<option value="4">3 - 4 Years</option>
+												<option value="5">4 - 5 Years</option>
+												<option value="6">5 - 6 Years</option>
+												<option value="7">6 - 7 Years</option>
+												<option value="8">7 - 8 Years</option>
+												<option value="9">8 - 9 Years</option>
+												<option value="10">9 - 10 Years</option>
+												<option value="11">10 - 11 Years</option>
+												<option value="12">11 - 12 Years</option>
+												<option value="13">12 - 13 Years</option>
+												<option value="14">13 - 14 Years</option>
+												<option value="15">14 - 15 Years</option>
+											</select> -->
+											<input type="text" class="form-control" data-ng-model="skill.yoexp" data-ng-readonly="keyskills" is-number>
+										</div>
+										<div class="col-sm-2">
+											<br />
+											<select class="form-control" data-ng-model="skill.rating"><!--   ng-init="skill.rating= skill.skillrate"> -->
+												<option value="1">1</option>
+												<option value="2">2</option>
+												<option value="3">3</option>
+												<option value="4">4</option>
+												<option value="5">5</option>
+												<option value="6">6</option>
+												<option value="7">7</option>
+												<option value="8">8</option>
+												<option value="9">9</option>
+												<option value="10">10</option>
+											</select>
+										</div>
+										<div class="col-sm-1">
+										    <i class="fa fa-trash-o" data-ng-click="removeSkills($index)" data-ng-hide="skillsRemove"  title="Remove" style="cursor: pointer;cursor: pointer; padding-top: 33px;color:red;"></i>
+										</div>
+									</div>
+								</div> 
+								<div class="col-sm-12" style="background-color: rgb(246, 246, 246); top: 10px;"><i class="fa fa-plus-square-o" data-ng-click="cloneSkills(skill)"  title="Add Another" style="float: right; cursor: pointer; padding-bottom: 10px;font-size: 1.2em;"></i></div>
+							</div>
+							
+							
+							
+							<div class="form-group">
+								<div class="col-sm-12">
+									<br />
+									<label>Specialization</label>
+									<textarea class="form-control" rows="2" data-ng-model="keySkills_specialization" data-ng-readonly="keyskills"></textarea>
+								</div><!-- /.form-group -->
+							</div><!-- /.col-* -->
+						</div><!-- /.row -->
+						<div class="row"><button type="button" class="btn btnUpdate" style="float:right;padding:2px !important;" data-ng-click="UpdateKeySkills(skill)" data-ng-hide="keyskills">Update</button></div>
+						<hr>
+						
+							
+		
+						
+						
+						
+						
+
+						<h3 class="page-header" id="ExInfo">Work Experience <div style="float:right;"><i class="fa fa-edit edit" data-ng-click="EditExperience()" data-ng-show="exp" title="Edit"></i><i class="fa fa-plus-square-o edit" data-ng-click="cloneExperience(experience)"  title="Add Another"></i></div></h3>
+						<!-- <div class="col-sm-7">
+							<div class="checkbox">
+								<br />
+								<label><input type="radio" name="radio-test{{$index}}" value="1" data-ng-model="experience.expradio" data-ng-value="'Fresher'" data-ng-disabled="exp">Fresher</label>
+								<label><input type="radio" name="radio-test{{$index}}" value="2" data-ng-model="experience.expradio" data-ng-value="'Experienced'" data-ng-disabled="exp">Experienced</label>
+							</div>							
+						</div> -->
+							
+						<div data-ng-repeat="experience in experiences track by $index">						  
+						  <div class="row" style="margin-left:0px;margin-right:0px;">
+								<i class="fa fa-trash-o" data-ng-click="removeExperience($index)" data-ng-hide="expRemove"  title="Remove" style="cursor: pointer;cursor: pointer; float: right;color:red;"></i>
+						  </div>
+						  <div class="row">
+						    <div class="col-sm-5">
+								<div class="form-group">
+									<input type="text"  data-ng-model="experience.uid" data-ng-readonly="exp" style="display:none">
+									<label>Organization Name</label>
+									<input type="text" class="form-control" data-ng-model="experience.organizationName" data-ng-readonly="exp">
+								</div><!-- /.form-group -->
+								<div class="form-group">
+									<label>Designation</label>
+									<input type="text" class="form-control" data-ng-model="experience.designationName" data-ng-readonly="exp">
+								</div><!-- /.form-group -->
+								
+								<!-- <div class="row">
+									<div class="form-group">
+										<label>Time Period</label>
+										<div class="col-sm-6">
+											<input type="text" class="form-control" ng-model="fromDate" data-max-date="{{untilDate}}" placeholder="From" bs-datepicker>
+										</div>
+										<div class="col-sm-6">
+											<input type="text" class="form-control" ng-model="untilDate" data-min-date="{{fromDate}}" placeholder="Until" bs-datepicker>
+										</div>
+									</div>
+								</div> -->
+								
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label>Time Period</label>
+											<!-- <input type="text" class="form-control" data-ng-model="experience.fromDate" data-ng-readonly="exp"> -->
+										    <input type="text" class="form-control expFromDate" data-ng-model="experience.fromDate" data-max-date="{{experience.toDate}}" placeholder="From" bs-datepicker>
+										</div><!-- /.form-group -->
+									</div><!-- /.col-* -->
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label style="height: 15px;"></label>
+											<!-- <input type="text" class="form-control" data-ng-model="experience.toDate" data-ng-readonly="exp"> -->
+										    <input type="text" class="form-control expToDate" data-ng-model="experience.toDate" data-min-date="{{experience.fromDate}}" placeholder="Until" bs-datepicker>
+										</div><!-- /.form-group -->
+									</div><!-- /.col-* -->
+								</div><!-- /.row -->
+							</div><!-- /.col-* -->
+							<div class="col-sm-7">
+								<div class="checkbox">
+									<br />
+									<label><input type="radio" name="radio-test{{$index}}" value="1" data-ng-model="experience.expradio" data-ng-value="'Current Employer'" data-ng-disabled="exp">Current Employer</label>
+									<label><input type="radio" name="radio-test{{$index}}" value="2" data-ng-model="experience.expradio" data-ng-value="'Previous Employer'" data-ng-disabled="exp">Previous Employer</label>
+								</div><!-- /.checkbox -->
+								<div class="form-group">
+									<br /><br />
+									<label>Short Description</label>
+									<textarea class="form-control" rows="3" data-ng-model="experience.expShortDescription" data-ng-readonly="exp"></textarea>
+								</div><!-- /.form-group -->
+							</div><!-- /.col-* -->
+						  </div>
+						  <hr style="border-top: 1px dashed #e9e9e9;"></hr>
+						</div>
+						<div class="row"><button type="button" class="btn btnUpdate" style="float:right;padding:2px !important;" data-ng-click="UpdateExperience(experience)" data-ng-hide="exp">Update</button></div>
+						
+						<hr>
+						
+						
+						<h3 class="page-header" id="EduInfo">Education <div style="float:right;"><i class="fa fa-edit edit" data-ng-click="EditEducation()" data-ng-show="edu" title="Edit"></i><i class="fa fa-plus-square-o" data-ng-click="CloneEducation(education)" title="Add Another"></i></div></h3>	
+						
+						<div data-ng-repeat="education in educations track by $index">
+						    <div class="row" style="margin-left:0px;margin-right:0px;">
+								<i class="fa fa-trash-o" data-ng-click="removeEducation($index)" data-ng-hide="eduRemove"  title="Remove" style="cursor: pointer;cursor: pointer; float: right;color:red;"></i>
+						    </div>
+							<div class="row">
+								<div class="col-sm-5">
+									<div class="form-group">
+										<label>Graduation</label>
+											<input type="text" class="form-control" data-ng-model="education.uid"  style="display:none">
+										<input type="text" class="form-control" data-ng-model="education.graduation"  data-ng-readonly="edu">
+									</div><!-- /.form-group -->
+									<div class="form-group">
+										<label>Specialization</label>
+										<input type="text" class="form-control" data-ng-model="education.specialization" data-ng-readonly="edu">
+									</div><!-- /.form-group -->
+									<div class="form-group">
+										<label>University/Institute</label>
+										<input type="text" class="form-control" data-ng-model="education.institute" data-ng-readonly="edu">
+									</div><!-- /.form-group -->
+									<div class="row">
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label>Time Period</label>
+												<!-- <input type="text" class="form-control"data-ng-model="education.fromYear" data-ng-readonly="edu"> -->
+											    <input type="text" class="form-control eduFromDate" data-ng-model="education.fromYear" data-max-date="{{education.toYear}}" placeholder="From" bs-datepicker>
+											</div><!-- /.form-group -->
+										</div><!-- /.col-* -->
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label style="height:15px;"></label>
+												<!-- <input type="text" class="form-control" data-ng-model="education.toYear" data-ng-readonly="edu"> -->
+												<input type="text" class="form-control eduToDate" data-ng-model="education.toYear" data-min-date="{{education.fromYear}}" placeholder="Until" bs-datepicker>
+											</div><!-- /.form-group -->
+										</div><!-- /.col-* -->
+									</div><!-- /.row -->
+								</div><!-- /.col-* -->
+								<div class="col-sm-7">
+									<div class="checkbox">
+										<br />
+										<label><input type="radio" name="radio-test{{$index}}" value="1" data-ng-model="education.eduradio" data-ng-model="Full Time" data-ng-disabled="edu">Full Time</label>
+										<label><input type="radio" name="radio-test{{$index}}" value="2" data-ng-model="education.eduradio" data-ng-model="Part Time" data-ng-disabled="edu">Part Time</label>
+										<label><input type="radio" name="radio-test{{$index}}" value="3" data-ng-model="education.eduradio" data-ng-model="Distance Learning" data-ng-disabled="edu">Distance Learning</label>
+									</div><!-- /.checkbox -->
+									<div class="form-group">
+										<br /><br />
+										<label>Short Description</label>
+										<textarea class="form-control" rows="7" data-ng-model="education.eduShortDescription" data-ng-readonly="edu"></textarea>
+									</div><!-- /.form-group -->
+								</div><!-- /.col-* -->
+							</div><!-- /.row -->
+							  <hr style="border-top: 1px dashed #e9e9e9;"></hr>
+						</div>
+						<div class="row"><button type="button" class="btn btnUpdate" style="float:right;padding:2px !important;" data-ng-click="UpdateEducation(education)" data-ng-hide="edu">Update</button></div>
+						<hr>
+						
+
+
+				<h3 class="page-header" id="Certifctn">Certification <div style="float:right;"><i class="fa fa-edit edit" data-ng-click="EditCertification()" data-ng-show="certificate" title="Edit"></i><i class="fa fa-plus-square-o" data-ng-click="cloneCertification(certification)"  title="Add Another"></i></div></h3>
+						<div class="col-sm-12">
+							<div class="col-sm-7">
+								<br />
+								<label>Industry Certifications</label>
+							</div>
+							<div class="col-sm-4">
+								<br />
+								<label>Upload Certificates</label>
+							</div>
+							<div class="col-sm-1">
+							</div>
+						</div>
+						<div class="certclass" data-ng-repeat="certification in certificationLists track by $index">
+							<div class="form-group">
+								<div class="col-sm-7">								
+									<label></label>
+									<div mass-autocomplete>
+										<input type="text" class="form-control" ng-model="certification.IndustryCertification" mass-autocomplete-item="autocomplete_certificationOptions" data-ng-readonly="certificate" >
+									</div>
+								</div>								
+								<div class="col-sm-4">
+									<div class="form-group">
+										<label form="form-register-certificate"></label>
+										<input type="file" name="form-register-certificate" id="form-register-certificate" data-ng-model="certification.profilePic" onchange="angular.element(this).scope().selectCertificatesforUpload(this.files)">
+									</div><!-- /.form-group-->
+								</div><!-- /.col-* -->
+								<div class="col-sm-1">
+									<i class="fa fa-trash-o" data-ng-click="removeCertification($index)" data-ng-hide="certRemove"  title="Remove" style="cursor: pointer;cursor: pointer; padding-top: 33px;color:red;"></i>
+								</div>
+							</div><!-- /.form-group -->
+						</div>
+						<div class="row"><button type="button" class="btn btnUpdate" style="float:right;padding:2px !important;" data-ng-click="UpdateCertification()" data-ng-hide="certificate">Update</button></div>
+<hr>
+
+
+
+						<div class="row">
+							<div class="col-sm-6">
+								<div class="col-md-6">
+									<h4 id="ResumeUploadInfo" style="margin-top: 18px;">Upload Resume</h4>
+								</div>
+								<div class="form-group col-md-6">
+									<label form="form-register-photo"></label>
+									<input type="file" name="form-register-photo" id="form-register-photo" data-ng-model="createProfile_resume" onchange="angular.element(this).scope().UploadResume(this.files)"/>
+								    
+								</div><!-- /.form-group-->
+							</div><!-- /.col-* -->
+							<div class="col-sm-6">
+							<button type="button" class="btn btnUpdate" style="float:right;padding:2px !important;" data-ng-click="UploadResume()" >Upload</button>
+							</div>
+						</div><!-- /.row -->
+						<hr>
+						
+					</form>
+				</div><!-- /.col-* -->
+				<div class="col-sm-3" id="ScrollNav">
+					<div class="widget follow-scroll">
+						<h2>Navigation</h2>
+						<ul class="nav">
+							<li><a data-ng-click="scrollTo('BasicInfo')"><span>1.</span> Basic Information</a></li>
+							<li><a data-ng-click="scrollTo('ContactInfo')"><span>2.</span> Contact</a></li>
+							<li><a data-ng-click="scrollTo('BioInfo')"><span>3.</span> Summary</a></li>
+							<li><a data-ng-click="scrollTo('KeyInfo')"><span>4.</span> Key Specialization</a></li>
+							<li><a data-ng-click="scrollTo('Certifctn')"><span>5.</span> Certification</a></li>
+							<li><a data-ng-click="scrollTo('ExInfo')"><span>5.</span> Experience</a></li>
+							<li><a data-ng-click="scrollTo('EduInfo')"><span>6.</span> Education </a></li>
+							<li><a data-ng-click="scrollTo('ResumeUploadInfo')"><span>7.</span> Upload Resume </a></li>
+						</ul>
+					</div><!-- /.widget -->
+				</div><!-- /.col-* -->
+			</div><!-- /.container -->
+		</div><!-- /.main -->
+	</div><!-- /.main-wrapper -->
+</div><!-- /.page-wrapper -->
+
+    <script type="text/javascript" src="assets/js/jquery.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.ezmark.js"></script>
+   <!--  <script type="text/javascript" src="assets/libraries/bootstrap-sass/javascripts/bootstrap/collapse.js"></script>
+    <script type="text/javascript" src="assets/libraries/bootstrap-sass/javascripts/bootstrap/dropdown.js"></script>
+    <script type="text/javascript" src="assets/libraries/bootstrap-sass/javascripts/bootstrap/tab.js"></script> -->
+    <script type="text/javascript" src="assets/libraries/bootstrap-sass/javascripts/bootstrap/transition.js"></script>
+    <script type="text/javascript" src="assets/libraries/bootstrap-fileinput/js/fileinput.min.js"></script>
+    <script type="text/javascript" src="assets/libraries/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script type="text/javascript" src="assets/libraries/bootstrap-wysiwyg/bootstrap-wysiwyg.min.js"></script>
+    <script type="text/javascript" src="assets/libraries/cycle2/jquery.cycle2.min.js"></script>
+    <script type="text/javascript" src="assets/libraries/cycle2/jquery.cycle2.carousel.min.js"></script>
+    <script type="text/javascript" src="assets/libraries/countup/countup.min.js"></script>
+    <script type="text/javascript" src="assets/js/main.js"></script>	
+	
+    <script type="text/javascript">
+        (function ($) {
+            var element = $('.follow-scroll'),
+                originalY = element.offset().top;
+
+            // Space between element and top of screen (when scrolling)
+            var topMargin = 20;
+
+            // Should probably be set in CSS; but here just for emphasis
+            element.css('position', 'relative');
+
+            $(window).on('scroll', function (event) {
+                var scrollTop = $(window).scrollTop();
+
+                element.stop(false, false).animate({
+                    top: scrollTop < originalY
+                            ? 0
+                            : scrollTop - originalY + topMargin
+                }, 300);
+            });
+        })(jQuery);
+    </script>
+

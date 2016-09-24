@@ -1,0 +1,155 @@
+﻿<style>
+.container{
+	padding-top: 0px !important;
+}
+.timepicker .btn-primary,
+.datepicker .btn-primary {
+    color: #fff;
+    background-color: #55a747 !important;
+}
+.datepicker .btn-info {
+    color: #fff;
+    background-color:#277718;
+}
+.dropdown-menu{
+	max-height: 285px !important;
+}
+</style>
+
+    <div class="page-wrapper" >
+        <div class="main-wrapper" data-ng-controller="EvaluationController">
+            <div class="main" style="padding-top: 30px;">
+                <div class="container">
+                    <h3 class="text-center" style="margin-top: 0px; margin-bottom: 41px;">Apply Evaluation</h3>
+                    <div class="row">
+                        <form method="get" action="#create-resume.html?">
+                            <div class="col-sm-12">
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label>Date</label>
+                                        <!-- <input type="text" class="form-control" placeholder="mm/dd/yyyy" data-ng-model="applyEvaluation.date"> -->
+                                        <input type="text" class="form-control" data-ng-model="applyEvaluation_date" name="date" placeholder="mm/dd/yyyy" bs-datepicker id="aplEvalDate">
+									</div><!-- /.form-group -->
+                                </div>
+                                <div class="col-sm-3">
+                                    <div class="form-group">
+                                        <label>Time</label>
+                                        <!-- <input type="text" class="form-control" placeholder="00:00 AM" data-ng-model="applyEvaluation.time"> -->
+                                        <input type="text" class="form-control" size="8"  data-ng-model="applyEvaluation_time" name="time" placeholder="00:00 AM" bs-timepicker id="aplEvalTime">
+									</div><!-- /.form-group -->
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Zone</label>
+                                        <!-- <select class="form-control" title="Choose your Zone" data-ng-model="applyEvaluation.zone"> -->
+										<select class="form-control" title="Choose your Zone" data-ng-model="applyEvaluation_zone"  id="aplEvalZone">
+                                            <option value="(GMT-12:00) International Date Line West">(GMT-12:00) International Date Line West</option>
+                                            <option value="(GMT-11:00) Midway Island, Samoa">(GMT-11:00) Midway Island, Samoa</option>
+                                            <option value="(GMT-10:00) Hawaii">(GMT-10:00) Hawaii</option>
+                                            <option value="(GMT-09:00) Alaska">(GMT-09:00) Alaska</option>
+                                            <option value="(GMT-08:00) Pacific Time (US and Canada); Tijuana">(GMT-08:00) Pacific Time (US and Canada); Tijuana</option>
+                                            <option value="(GMT-07:00) Mountain Time (US and Canada)">(GMT-07:00) Mountain Time (US and Canada)</option>
+                                            <option value="(GMT-07:00) Chihuahua, La Paz, Mazatlan">(GMT-07:00) Chihuahua, La Paz, Mazatlan</option>
+                                            <option value="(GMT-07:00) Arizona">(GMT-07:00) Arizona</option>
+                                            <option value="(GMT-06:00) Central Time (US and Canada">(GMT-06:00) Central Time (US and Canada</option>
+                                            <option value="(GMT-06:00) Saskatchewan">(GMT-06:00) Saskatchewan</option>
+                                            <option value="(GMT-06:00) Guadalajara, Mexico City, Monterrey">(GMT-06:00) Guadalajara, Mexico City, Monterrey</option>
+                                            <option value="(GMT-06:00) Central America">(GMT-06:00) Central America</option>
+                                            <option value="(GMT-05:00) Eastern Time (US and Canada)">(GMT-05:00) Eastern Time (US and Canada)</option>
+                                            <option value="(GMT-05:00) Indiana (East)">(GMT-05:00) Indiana (East)</option>
+                                            <option value="(GMT-05:00) Bogota, Lima, Quito">(GMT-05:00) Bogota, Lima, Quito</option>
+                                            <option value="(GMT-04:00) Atlantic Time (Canada)">(GMT-04:00) Atlantic Time (Canada)</option>
+                                            <option value="(GMT-04:00) Caracas, La Paz">(GMT-04:00) Caracas, La Paz</option>
+                                            <option value="(GMT-04:00) Santiago">(GMT-04:00) Santiago</option>
+                                            <option value="(GMT-03:30) Newfoundland and Labrador">(GMT-03:30) Newfoundland and Labrador</option>
+                                            <option value="(GMT-03:00) Brasilia">(GMT-03:00) Brasilia</option>
+                                            <option value="(GMT-03:00) Buenos Aires, Georgetown">(GMT-03:00) Buenos Aires, Georgetown</option>
+                                            <option value="(GMT-03:00) Greenland">(GMT-03:00) Greenland</option>
+                                            <option value="23">(GMT-02:00) Mid-Atlantic</option>
+                                            <option value="24">(GMT-01:00) Azores</option>
+                                            <option value="25">(GMT-01:00) Cape Verde Islands</option>
+                                            <option value="26">(GMT) Greenwich Mean Time: Dublin, Edinburgh, Lisbon, London</option>
+                                            <option value="27">(GMT) Casablanca, Monrovia</option>
+                                            <option value="28">(GMT+01:00) Belgrade, Bratislava, Budapest, Ljubljana, Prague</option>
+                                            <option value="29">(GMT+01:00) Sarajevo, Skopje, Warsaw, Zagreb</option>
+                                            <option value="30">(GMT+01:00) Brussels, Copenhagen, Madrid, Paris</option>
+                                            <option value="31">(GMT+01:00) Amsterdam, Berlin, Bern, Rome, Stockholm, Vienna</option>
+                                            <option value="32">(GMT+01:00) West Central Africa</option>
+                                            <option value="33">(GMT+02:00) Bucharest</option>
+                                            <option value="34">(GMT+02:00) Cairo</option>
+                                            <option value="35">(GMT+02:00) Helsinki, Kiev, Riga, Sofia, Tallinn, Vilnius</option>
+                                            <option value="36">(GMT+02:00) Athens, Istanbul, Minsk</option>
+                                            <option value="37">(GMT+02:00) Jerusalem</option>
+                                            <option value="38">(GMT+02:00) Harare, Pretoria</option>
+                                            <option value="39">(GMT+03:00) Moscow, St. Petersburg, Volgograd</option>
+                                            <option value="40">(GMT+03:00) Kuwait, Riyadh</option>
+                                            <option value="41">(GMT+03:00) Nairobi</option>
+                                            <option value="42">(GMT+03:00) Baghdad</option>
+                                            <option value="43">(GMT+03:30) Tehran</option>
+                                            <option value="44">(GMT+04:00) Abu Dhabi, Muscat</option>
+                                            <option value="45">(GMT+04:00) Baku, Tbilisi, Yerevan</option>
+                                            <option value="46">(GMT+04:30) Kabul</option>
+                                            <option value="47">(GMT+05:00) Ekaterinburg</option>
+                                            <option value="48">(GMT+05:00) Islamabad, Karachi, Tashkent</option>
+                                            <option value="49">(GMT+05:30) Chennai, Kolkata, Mumbai, New Delhi</option>
+                                            <option value="50">(GMT+05:45) Kathmandu</option>
+                                            <option value="51">(GMT+06:00) Astana, Dhaka</option>
+                                            <option value="52">(GMT+06:00) Sri Jayawardenepura</option>
+                                            <option value="53">(GMT+06:00) Almaty, Novosibirsk</option>
+                                            <option value="54">(GMT+06:30) Yangon Rangoon</option>
+                                            <option value="55">(GMT+07:00) Bangkok, Hanoi, Jakarta</option>
+                                            <option value="56">(GMT+07:00) Krasnoyarsk</option>
+                                            <option value="57">(GMT+08:00) Beijing, Chongqing, Hong Kong SAR, Urumqi</option>
+                                            <option value="58">(GMT+08:00) Kuala Lumpur, Singapore</option>
+                                            <option value="59">(GMT+08:00) Taipei</option>
+                                            <option value="60">(GMT+08:00) Perth</option>
+                                            <option value="61">(GMT+08:00) Irkutsk, Ulaanbaatar</option>
+                                            <option value="62">(GMT+09:00) Seoul</option>
+                                            <option value="63">(GMT+09:00) Osaka, Sapporo, Tokyo</option>
+                                            <option value="64">(GMT+09:00) Yakutsk</option>
+                                            <option value="65">(GMT+09:30) Darwin</option>
+                                            <option value="66">(GMT+09:30) Adelaide</option>
+                                            <option value="67">(GMT+10:00) Canberra, Melbourne, Sydney</option>
+                                            <option value="68">(GMT+10:00) Brisbane</option>
+                                            <option value="68">(GMT+10:00) Hobart</option>
+                                            <option value="70">(GMT+10:00) Vladivostok</option>
+                                            <option value="71">(GMT+10:00) Guam, Port Moresby</option>
+                                            <option value="72">(GMT+11:00) Magadan, Solomon Islands, New Caledonia</option>
+                                            <option value="73">(GMT+12:00) Fiji Islands, Kamchatka, Marshall Islands</option>
+                                            <option value="74">(GMT+12:00) Auckland, Wellington</option>
+                                            <option value="75">(GMT+13:00) Nuku'alofa</option>
+                                        </select>
+                                    </div><!-- /.form-group -->
+                                </div>
+
+
+                                <div class="form-group">
+                                    <div class="col-sm-12">
+                                        <br />
+                                        <label>Key Specialization</label>
+                                        <textarea class="form-control" rows="4" data-ng-model="applyEvaluation_keySpecialization"></textarea>
+                                    </div><!-- /.form-group -->
+                                </div><!-- /.col-* -->
+                            </div><!-- /.row -->
+
+                            <div class="center">
+                                <button type="button" class="btn btn-secondary btn-md" style="margin-top: 20px;" data-ng-click="ApplyEvaluation()">Apply for Evaluation</button>
+                            </div><!-- /.center -->
+                        </form>
+                    </div><!-- /.col-* -->
+                </div><!-- /.container -->
+            </div><!-- /.main -->
+        </div><!-- /.main-wrapper -->
+    </div><!-- /.page-wrapper -->
+
+  <script type="text/javascript" src="assets/js/jquery.js"></script>
+<script type="text/javascript" src="assets/js/jquery.ezmark.js"></script>
+
+<script type="text/javascript" src="assets/libraries/bootstrap-sass/javascripts/bootstrap/transition.js"></script>
+<script type="text/javascript" src="assets/libraries/bootstrap-fileinput/js/fileinput.min.js"></script>
+<script type="text/javascript" src="assets/libraries/bootstrap-select/js/bootstrap-select.min.js"></script>
+<script type="text/javascript" src="assets/libraries/bootstrap-wysiwyg/bootstrap-wysiwyg.min.js"></script>
+<script type="text/javascript" src="assets/libraries/cycle2/jquery.cycle2.min.js"></script>
+<script type="text/javascript" src="assets/libraries/cycle2/jquery.cycle2.carousel.min.js"></script>
+<script type="text/javascript" src="assets/libraries/countup/countup.min.js"></script>
+<script type="text/javascript" src="assets/js/main.js"></script>

@@ -1,0 +1,74 @@
+﻿<style>
+.container{
+	padding-top: 0px !important;
+}
+  .resume-main {
+		padding-top: 10px !important;
+		padding-bottom: 10px !important;
+	}
+
+	.resume-main-image {
+		margin-top: 30px !important;
+	}
+
+	.resume {
+		margin-bottom: 20px !important;
+	}
+</style>
+    <div class="page-wrapper">
+        
+        <div class="main-wrapper" data-ng-controller="EvaluatorController">
+            <div class="main" style="padding-top: 30px;">
+                <div class="container">
+                    <h3 class="text-center" style="margin-top: 0px; margin-bottom: 41px;">Candidates who applied for Interview</h3>
+					<div data-ng-repeat="eval in evaluators  track by $index">
+						<div class="resume" >
+							<div class="resume-main row">
+								<div class="resume-main-image col-sm-2">
+									<img src="assets/img/tmp/resume1.png" alt="">
+									<a href="#" class="resume-main-image-label">
+										<img src="assets/img/tmp/resume1.png" alt="">
+									</a>
+								</div><!-- /.resume-main-image -->
+								<div class="resume-main-content col-sm-6">
+									<h2>
+										<a href="ViewEvaluator.html">{{eval.Name}}</a>
+										<span class="resume-main-verified"><i class="fa fa-check"></i></span>
+									</h2>
+									<h3>{{eval.Desg}}</h3>
+									<p class="resume-main-contacts">
+									   {{eval.Address}}<br>
+										Email: <a href="mailto:{{eval.Mail}}.com">{{eval.Mail}}</a> - Website: <a href="http://{{eval.Website}}/">{{eval.Website}}</a>
+									</p><!-- /.resume-main-contact -->
+								</div><!-- /.resume-main-content -->
+								<div class="col-sm-3">
+									<br />
+									<p>Date:&nbsp;&nbsp;<span style="color: #55a747">{{eval.Date}}</span></p>
+									<p>Time:&nbsp;&nbsp;<span style="color: #55a747">{{eval.Time}}</span></p>
+									<p>Zone:&nbsp;&nbsp;<span style="color: #55a747">{{eval.Zone}}</span></p>
+
+								</div><!-- /.resume-main-content -->
+
+							</div><!-- /.resume-main -->
+						</div>
+					</div>					
+					
+                </div><!-- /.container -->
+            </div><!-- /.main -->
+        </div><!-- /.main-wrapper -->
+
+    </div><!-- /.page-wrapper -->
+
+    <script type="text/javascript" src="assets/js/jquery.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.ezmark.js"></script>
+    <script type="text/javascript" src="assets/libraries/bootstrap-sass/javascripts/bootstrap/collapse.js"></script>
+    <script type="text/javascript" src="assets/libraries/bootstrap-sass/javascripts/bootstrap/dropdown.js"></script>
+    <script type="text/javascript" src="assets/libraries/bootstrap-sass/javascripts/bootstrap/tab.js"></script>
+    <script type="text/javascript" src="assets/libraries/bootstrap-sass/javascripts/bootstrap/transition.js"></script>
+    <script type="text/javascript" src="assets/libraries/bootstrap-fileinput/js/fileinput.min.js"></script>
+    <script type="text/javascript" src="assets/libraries/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script type="text/javascript" src="assets/libraries/bootstrap-wysiwyg/bootstrap-wysiwyg.min.js"></script>
+    <script type="text/javascript" src="assets/libraries/cycle2/jquery.cycle2.min.js"></script>
+    <script type="text/javascript" src="assets/libraries/cycle2/jquery.cycle2.carousel.min.js"></script>
+    <script type="text/javascript" src="assets/libraries/countup/countup.min.js"></script>
+    <script type="text/javascript" src="assets/js/main.js"></script>

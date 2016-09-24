@@ -1,0 +1,125 @@
+﻿
+
+    <div class="page-wrapper">
+
+        <div class="main-wrapper">
+            <div class="main" style="padding-top: 30px;">
+                <div class="container">
+                    <h3 class="text-center" style="margin-top: 0px; margin-bottom: 41px;">Required Bank Details  </h3>               
+               
+					<div class="row">
+						<div class="col-sm-6">       
+							<label>Zone</label>
+							<select class="form-control" title="Choose your Zone">
+								<option value="1">All European Countries (All Currencies)</option>
+								<option value="2">Hong Kong (All Currencies)</option>
+								<option value="3">Australia / New Zealand / South Africa (All Currencies)</option>
+								<option value="4">Canada (All Currencies)</option>
+								<option value="5">USA (All Currencies)</option>
+								<option value="6">India (All Currencies)</option>
+								<option value="7">All Other Countries (All Currencies)</option>                                  
+							</select>                         
+						</div>
+					</div>
+					<br/>
+					<br/>
+
+				   <div class="row">
+					   <div class="col-sm-6">
+							<div class="form-group">
+								<label>Account Holder's Name</label>
+								<input type="text" class="form-control" placeholder="Account Holder's Name">
+							</div><!-- /.form-group -->
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label>Account Number</label>
+								<input type="text" class="form-control" placeholder="Account Number">
+							</div><!-- /.form-group -->
+						</div>
+				   </div>
+               
+					<div class="row">
+					   <div class="col-sm-6">
+							<div class="form-group">
+								<label>ABA Number</label>
+								<input type="text" class="form-control" placeholder="ABA Number">
+							</div><!-- /.form-group -->
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label>Bank Name</label>
+								<input type="text" class="form-control" placeholder="Bank Name">
+							</div><!-- /.form-group -->
+						</div>
+					</div>
+					<div class="row">
+					   <div class="col-sm-6">
+							<div class="form-group">
+								<label>Bank Address</label>
+								<input type="text" class="form-control" placeholder="Bank Address">
+							</div><!-- /.form-group -->
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<label>Account Holder's Name</label>
+								<input type="text" class="form-control" placeholder="SWIFT/BIC code">
+							</div><!-- /.form-group -->
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-sm-12">
+							<br />
+							<label>Additional Comments</label>
+							<textarea class="form-control" rows="4"></textarea>
+						</div><!-- /.form-group -->
+					</div>
+					<div>
+						<div class="col-sm-12">
+							<div class="center">
+								<button type="button" class="btn btn-secondary btn-md" style="margin-top: 20px;">Update my Details</button>
+							</div><!-- /.center -->
+						</div>  
+					</div>            
+               
+               
+                </div><!-- /.container -->
+            </div><!-- /.main -->
+        </div><!-- /.main-wrapper -->
+    </div><!-- /.page-wrapper -->
+
+    <script type="text/javascript" src="assets/js/jquery.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.ezmark.js"></script>
+    <script type="text/javascript" src="assets/libraries/bootstrap-sass/javascripts/bootstrap/collapse.js"></script>
+    <script type="text/javascript" src="assets/libraries/bootstrap-sass/javascripts/bootstrap/dropdown.js"></script>
+    <script type="text/javascript" src="assets/libraries/bootstrap-sass/javascripts/bootstrap/tab.js"></script>
+    <script type="text/javascript" src="assets/libraries/bootstrap-sass/javascripts/bootstrap/transition.js"></script>
+    <script type="text/javascript" src="assets/libraries/bootstrap-fileinput/js/fileinput.min.js"></script>
+    <script type="text/javascript" src="assets/libraries/bootstrap-select/js/bootstrap-select.min.js"></script>
+    <script type="text/javascript" src="assets/libraries/bootstrap-wysiwyg/bootstrap-wysiwyg.min.js"></script>
+    <script type="text/javascript" src="assets/libraries/cycle2/jquery.cycle2.min.js"></script>
+    <script type="text/javascript" src="assets/libraries/cycle2/jquery.cycle2.carousel.min.js"></script>
+    <script type="text/javascript" src="assets/libraries/countup/countup.min.js"></script>
+    <script type="text/javascript" src="assets/js/main.js"></script>
+    <script type="text/javascript">
+        (function ($) {
+            var element = $('.follow-scroll'),
+                originalY = element.offset().top;
+
+            // Space between element and top of screen (when scrolling)
+            var topMargin = 20;
+
+            // Should probably be set in CSS; but here just for emphasis
+            element.css('position', 'relative');
+
+            $(window).on('scroll', function (event) {
+                var scrollTop = $(window).scrollTop();
+
+                element.stop(false, false).animate({
+                    top: scrollTop < originalY
+                            ? 0
+                            : scrollTop - originalY + topMargin
+                }, 300);
+            });
+        })(jQuery);
+    </script>
